@@ -1,18 +1,29 @@
 
 import $ from 'jquery';
 
-let bool = true; // When bool true print X, if bool false print O
+let isX = true;
 
-$(".cell").click(function() { // Eventlissener if was click on cell
-    if(bool === true) {
-        $(this).css('background-image', 'url(x.png)') // Prints X        
-        bool = false
+const printX = () => {
+    $(this).css('background-image', 'url(x.png)')
+}
+
+const printO = () => {
+    $(this).css('background-image', 'url(o.png)')
+}
+
+$(".cell").click(function() {
+    if($(this).css('background-image') !== 'none') { // Checks if already clicked before
+        return;
+    }
+    if(isX === true) {
+        printX()
+        isX = false
     } else {
-        $(this).css('background-image', 'url(o.png)') // Prints O
-        bool = true
+        printO()
+        isX = true
     }
 })
 
-$("#resetbtn").click(function() { // Eventlissener if clicked reset button
+$("#resetbtn").click(function() {
     location.reload() // Reset the game
 })
