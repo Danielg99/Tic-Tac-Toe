@@ -1,4 +1,6 @@
 
+import $ from 'jquery';
+
 let bool = true; // When bool true print X, if bool false print O
 
 $(".cell").click(function() { // Eventlissener if was click on cell
