@@ -1,0 +1,28 @@
+body {
+    background-color: grey;
+    text-align: center;
+}
+
+#title{
+    margin-top: 125px;
+    color: white;
+}
+
+#content {
+    height: 450px;
+    width: 50%;
+    /* border: 1px solid white; */
+    margin: auto;
+    margin-top: 50px;
+}
+
+.cell {
+    width: 33%;
+    height: 150px;
+    float: left;
+    border: 1px solid white;
+}
+
+.cell:hover {
+    background-color: rgb(195, 195, 195);
+}
