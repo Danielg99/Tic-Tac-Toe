@@ -13,8 +13,23 @@ const O_BACKGROUND = 'url("o.png")';
 const X_MESSAGE = 'Player X won!';
 const O_MESSAGE = 'Player O won!';
 
-
 let isX = true;
+let scoreX = 0
+let scoreO = 0
+
+if(localStorage.getItem('X')) {
+    scoreX = parseInt(localStorage.getItem('X'))
+} else {
+    scoreX = 0
+}
+if(localStorage.getItem('O')) {
+    scoreO = parseInt(localStorage.getItem('O'))
+} else {
+    scoreO = 0
+}
+$('.score-x').text(scoreX)
+$('.score-o').text(scoreO)
+
 
 const printX = (element) => {
     $(element).css('background-image', 'url("x.png")')
@@ -37,6 +52,11 @@ const checkRow = (cell1, cell2, cell3, player) => {
     if(cells[cell1].style.backgroundImage === img && 
        cells[cell2].style.backgroundImage === img && 
        cells[cell3].style.backgroundImage === img) {
+        if(player === PLAYER.X) {
+            localStorage.setItem('X', ++scoreX)
+        }else {
+            localStorage.setItem('O', ++scoreO)
+        }
         alert(message)
         location.reload()
     }
@@ -78,7 +98,6 @@ $(".cell").click((e) => {
         isX = true
         winO()
     }
-    
 })
 
 $("#resetbtn").click(() => {
